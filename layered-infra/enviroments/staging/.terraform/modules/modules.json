@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"app_server","Source":"../../modules/app_server","Dir":"../../modules/app_server"},{"Key":"bastion_host","Source":"../../modules/bastion_host","Dir":"../../modules/bastion_host"},{"Key":"iam","Source":"../../modules/iam","Dir":"../../modules/iam"},{"Key":"vpc","Source":"../../modules/vpc","Dir":"../../modules/vpc"}]}
