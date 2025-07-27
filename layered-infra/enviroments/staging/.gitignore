@@ -1,0 +1,17 @@
+# Terraform state and secrets
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.pem
+*.key
+*.env
+
+# Terraform crash logs
+crash.log
+
+# VS Code
+.vscode/
+
+# Local Python/Ansible cache (if used)
+__pycache__/
+*.pyc
