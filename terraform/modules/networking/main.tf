@@ -4,6 +4,7 @@ resource "aws_vpc" "this" {
     Name = "${var.project_name}-vpc"
   }
 }
+### Yo uare missing critical pieces for a VPC, like IGW, NAT Gateway route tables, etc.
 
 resource "aws_subnet" "public" {
   vpc_id                 = aws_vpc.this.id
