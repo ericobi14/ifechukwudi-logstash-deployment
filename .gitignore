@@ -6,3 +6,5 @@
 crash.log
 *.bak
 .terraform/
+ifechukwudi-logstash-deployment.git.bfg-report/
+ifechukwudi-logstash-deployment.git/
