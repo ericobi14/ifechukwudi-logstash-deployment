@@ -1,5 +1,13 @@
+module "networking" {
+  source             = "../modules/networking"
+  vpc_cidr           = var.vpc_cidr
+  az_configurations  = var.az_configurations
+  common_tags        = var.common_tags
+  project_name       = var.project_name
+}
+
 module "bastion" {
-  source         = "../../../../../compute"
+  source         = "./modules/compute"
   name           = "bastion"
   ami_id         = "ami-02003f9f0fde924ea"
   instance_type  = "t2.micro"
@@ -24,7 +32,7 @@ module "bastion" {
 }
 
 module "logstash" {
-  source         = "../../../../../compute"
+  source         = "./modules/compute"
   name           = "logstash"
   ami_id         = "ami-02003f0fde924ea"
   instance_type  = "t2.micro"

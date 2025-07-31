@@ -1,4 +1,3 @@
-.terraform/
 *.tfstate
 *.tfstate.backup
 *.tfvars
@@ -6,3 +5,7 @@
 *.log
 crash.log
 *.bak
+.terraform/
+ifechukwudi-logstash-deployment.git.bfg-report/
+ifechukwudi-logstash-deployment.git/
+.terraform/
