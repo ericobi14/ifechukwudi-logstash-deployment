@@ -5,7 +5,7 @@ variable "subnet_id" {}
 variable "vpc_id" {}
 variable "ingress_rules" {}
 variable "egress_rules" {}
-
+### Not sure why yo uhave the layered-infra files in this project, yu should remove tehe fodler entirely
 resource "aws_security_group" "this" {
   name   = "${var.name}-sg"
   vpc_id = var.vpc_id
