@@ -8,18 +8,9 @@ vpc_cidr           = "172.31.0.0/16"
 
 az_configurations = [
   {
-    az                = "eu-central-1a"
-    public_subnet     = "10.0.1.0/24"
-    private_subnet    = "10.0.2.0/24"
-  }
-]
-
-ingress_rules = [
-  {
-    from_port  = 22
-    to_port    = 22
-    protocol   = "tcp"
-    source     = "77.25.38.174/32"
+    az             = "eu-central-1a"
+    public_subnet  = "10.0.1.0/24"
+    private_subnet = "10.0.2.0/24"
   }
 ]
 
@@ -46,3 +37,18 @@ logstash = {
   key1 = "value1"
   key2 = "value2"
 }
+
+ingress_rules = [
+  {
+    from_port = 22
+    to_port   = 22
+    protocol  = "tcp"
+    source    = "0.0.0.0/0"
+  },
+  {
+    from_port  = 443
+    to_port    = 443
+    protocol   = "tcp"
+    source_sg  = "sg-abc123456789"
+  }
+]
