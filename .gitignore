@@ -8,3 +8,4 @@ crash.log
 .terraform/
 ifechukwudi-logstash-deployment.git.bfg-report/
 ifechukwudi-logstash-deployment.git/
+.terraform/
