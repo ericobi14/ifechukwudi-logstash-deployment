@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"bastion","Source":"./modules/compute","Dir":""},{"Key":"logstash","Source":"./modules/compute","Dir":""},{"Key":"networking","Source":"../modules/networking","Dir":""}]}

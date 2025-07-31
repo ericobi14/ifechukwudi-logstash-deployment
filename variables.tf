@@ -1,4 +1,3 @@
-
 variable "region" {
   description = "The AWS region to deploy resources into"
   type        = string
@@ -57,15 +56,6 @@ variable "project_name" {
   type = string
 }
 
-variable "ingress_rules" {
-  type = list(object({
-    from_port = number
-    to_port   = number
-    protocol  = string
-    source    = string
-  }))
-}
-
 variable "egress_rules" {
   type = list(object({
     from_port   = number
@@ -88,4 +78,28 @@ variable "private_subnet_cidr" {
 variable "name" {
   description = "Name tag for resources"
   type        = string
+}
+
+variable "ingress_rules" {
+  description = <<EOT
+List of ingress rules with from_port, to_port, protocol, and either source or source_sg.
+Only one of 'source' or 'source_sg' should be provided per rule. If both are provided, the configuration is invalid.
+EOT
+
+  type = list(object({
+    from_port  = number
+    to_port    = number
+    protocol   = string
+    source     = optional(string)
+    source_sg  = optional(string)
+  }))
+
+  validation {
+    condition = alltrue([
+      for rule in var.ingress_rules : (
+        !(contains(keys(rule), "source") && rule.source != null && contains(keys(rule), "source_sg") && rule.source_sg != null)
+      )
+    ])
+    error_message = "Only one of 'source' or 'source_sg' can be set per ingress rule."
+  }
 }

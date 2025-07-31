@@ -19,7 +19,10 @@ variable "vpc_id" {
 }
 
 variable "ingress_rules" {
-  description = "List of ingress rules with from_port, to_port, protocol, and source/source_sg"
+  description = <<EOT
+List of ingress rules with from_port, to_port, protocol, and either source or source_sg.
+Only one of 'source' or 'source_sg' should be provided per rule. If both are provided, the configuration is invalid.
+EOT
   type = list(object({
     from_port  = number
     to_port    = number
@@ -27,6 +30,14 @@ variable "ingress_rules" {
     source_sg  = optional(string)
     source     = optional(string)
   }))
+  validation {
+    condition = alltrue([
+      for rule in var.ingress_rules : (
+        !(contains(keys(rule), "source") && rule.source != null && contains(keys(rule), "source_sg") && rule.source_sg != null)
+      )
+    ])
+    error_message = "Only one of 'source' or 'source_sg' can be set per ingress rule."
+  }
 }
 
 variable "egress_rules" {
